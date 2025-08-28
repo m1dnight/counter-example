@@ -1,0 +1,9 @@
+[package]
+name = "counter_app"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+counter_logic = { path = "../counter_logic"}
+arm = { git = "https://github.com/anoma/arm-risc0", branch = "xuyang/simplify_features", default-features = true }
+rand = "0.8"
