@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = [ "myapp" ]
+members = [ "apps/counter_witness", "apps/counter_app"]
 
 [profile.bench]
 lto = true

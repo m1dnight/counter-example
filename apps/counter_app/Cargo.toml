@@ -1,0 +1,10 @@
+[package]
+name = "counter_app"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# the features are important. figure out later why these work.
+arm = { git = "https://github.com/anoma/arm-risc0", package = "arm", tag = "v0.3.0", features = ["transaction", "logic_circuit", "compliance_circuit"], default-features = false }
+serde = { version = "1.0.219", features = ["derive"] }
+counter_witness = { path = "../counter_witness" }
