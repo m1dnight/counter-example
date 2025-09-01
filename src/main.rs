@@ -13,6 +13,8 @@ fn submit_transaction(transaction: Transaction) {
 
     let _ = rt.block_on(async { submit(transaction).await });
 }
+
+
 fn main() {
     let (tx, _, _) = create_init_counter_tx();
     submit_transaction(tx);

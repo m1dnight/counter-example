@@ -8,7 +8,12 @@ use arm::{
 };
 use serde::{Deserialize, Serialize};
 
+#[cfg(feature = "nif")]
+use rustler::NifStruct;
+
 #[derive(Clone, Default, Serialize, Deserialize)]
+#[cfg_attr(feature = "nif", derive(NifStruct))]
+#[cfg_attr(feature = "nif", module = "Anoma.Examples.Counter.CounterWitness")]
 pub struct CounterWitness {
     pub is_consumed: bool,
     pub old_counter: Resource,

@@ -9,6 +9,8 @@ use lazy_static::lazy_static;
 use risc0_zkvm::Digest;
 use serde::{Deserialize, Serialize};
 
+#[cfg(feature = "nif")]
+use rustler::NifStruct;
 pub const SIMPLE_COUNTER_ELF: &[u8] = include_bytes!("../elf/counter_guest.bin");
 lazy_static! {
     pub static ref SIMPLE_COUNTER_ID: Digest =
@@ -17,6 +19,8 @@ lazy_static! {
 }
 
 #[derive(Clone, Default, Deserialize, Serialize)]
+#[cfg_attr(feature = "nif", derive(NifStruct))]
+#[cfg_attr(feature = "nif", module = "Anoma.Examples.Counter.CounterLogic")]
 pub struct CounterLogic {
     witness: CounterWitness,
 }
@@ -57,4 +61,3 @@ impl LogicProver for CounterLogic {
         &self.witness
     }
 }
-

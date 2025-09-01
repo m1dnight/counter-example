@@ -27,4 +27,8 @@ counter_witness = { path = "../counter_witness"}
 serde = { version = "1.0.219", features = ["derive"] }
 lazy_static = "1.5.0"
 hex = "0.4"
+rustler = {version = "0.36.2", optional = true}
 
+[features]
+default = []
+nif = ["arm/nif", "dep:rustler", "counter_witness/nif"]

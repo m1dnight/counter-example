@@ -533,6 +533,7 @@ dependencies = [
  "lazy_static",
  "rand 0.8.5",
  "risc0-zkvm",
+ "rustler",
  "serde",
 ]
 
@@ -819,6 +820,7 @@ name = "counter_witness"
 version = "0.1.0"
 dependencies = [
  "arm",
+ "rustler",
  "serde",
 ]
 
@@ -1295,6 +1297,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "inventory"
+version = "0.3.21"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bc61209c082fbeb19919bee74b176221b27223e27b65d781eb91af24eb1fb46e"
+dependencies = [
+ "rustversion",
+]
+
+[[package]]
 name = "itertools"
 version = "0.10.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1365,6 +1376,16 @@ name = "libc"
 version = "0.2.175"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6a82ae493e598baaea5209805c49bbf2ea7de956d50d7da0da1164f9c6d28543"
+
+[[package]]
+name = "libloading"
+version = "0.8.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "07033963ba89ebaf1584d767badaa2e8fcec21aedea6b8c0346d487d49c28667"
+dependencies = [
+ "cfg-if",
+ "windows-targets",
+]
 
 [[package]]
 name = "libm"
@@ -1777,6 +1798,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "regex-lite"
+version = "0.1.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "943f41321c63ef1c92fd763bfe054d2668f7f225a5c29f0105903dc2fc04ba30"
+
+[[package]]
 name = "regex-syntax"
 version = "0.8.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2067,6 +2094,31 @@ dependencies = [
  "libc",
  "linux-raw-sys",
  "windows-sys",
+]
+
+[[package]]
+name = "rustler"
+version = "0.36.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e3fe55230a9c379733dd38ee67d4072fa5c558b2e22b76b0e7f924390456e003"
+dependencies = [
+ "inventory",
+ "libloading",
+ "regex-lite",
+ "rustler_codegen",
+]
+
+[[package]]
+name = "rustler_codegen"
+version = "0.36.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "eb3b8de901ae61418e2036245d28e41ef58080d04f40b68430471ae36a4e84ed"
+dependencies = [
+ "heck",
+ "inventory",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.106",
 ]
 
 [[package]]
