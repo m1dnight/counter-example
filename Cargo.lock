@@ -1735,6 +1735,7 @@ dependencies = [
 name = "counter-app-test"
 version = "0.1.0"
 dependencies = [
+ "alloy",
  "arm",
  "counter_library",
  "counter_logic_circuit",

@@ -1,6 +1,6 @@
 use arm::action::Action;
 use arm::action_tree::MerkleTree;
-use arm::compliance::ComplianceWitness;
+use arm::compliance::{ComplianceInstance, ComplianceWitness};
 use arm::compliance_unit::ComplianceUnit;
 use arm::delta_proof::DeltaWitness;
 use arm::logic_proof::{LogicProver, LogicVerifier};
@@ -114,7 +114,7 @@ pub fn generate_logic_proofs(
 // resource. It generates a compliance proof and logic proofs, and constructs
 // the transaction. The transaction is then returned along with the counter
 // resource and nullifier key.
-pub fn create_init_counter_tx() -> (Transaction, Resource, NullifierKey) {
+pub fn create_init_counter_tx() -> (Transaction, Resource, NullifierKey, ComplianceUnit, ComplianceInstance) {
     let (ephemeral_counter, ephemeral_nf_key) = ephemeral_counter();
     let (counter_resource, counter_nf_key) =
         init_counter_resource(&ephemeral_counter, &ephemeral_nf_key);
@@ -124,15 +124,16 @@ pub fn create_init_counter_tx() -> (Transaction, Resource, NullifierKey) {
         MerklePath::default(),
         counter_resource.clone(),
     );
+
     let logic_verifier_inputs = generate_logic_proofs(
         ephemeral_counter,
         ephemeral_nf_key,
         counter_resource.clone(),
     );
 
-    let action = Action::new(vec![compliance_unit], logic_verifier_inputs);
+    let action = Action::new(vec![compliance_unit.clone()], logic_verifier_inputs);
     let delta_witness = DeltaWitness::from_bytes(&rcv);
     let mut tx = Transaction::create(vec![action], Delta::Witness(delta_witness));
     tx.generate_delta_proof();
-    (tx, counter_resource, counter_nf_key)
+    (tx, counter_resource, counter_nf_key, compliance_unit.clone(), compliance_unit.clone().get_instance())
 }
