@@ -1,0 +1,9 @@
+[package]
+name = "counter_witness"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = "1.0"
+arm = { git = "https://github.com/anoma/arm-risc0", branch = "xuyang/simplify_features", default-features = false }
+
