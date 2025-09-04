@@ -5,7 +5,7 @@ edition = "2021"
 
 [dependencies]
 serde = "1.0"
-arm = { git = "https://github.com/anoma/arm-risc0", branch = "xuyang/simplify_features", default-features = false}
+arm = { git = "https://github.com/anoma/arm-risc0", branch = "m1dnight/risc0-3.0.3", default-features = false}
 
 rustler = {version = "0.36.2", optional = true}
 

@@ -22,7 +22,7 @@ risc0-zkvm-platform = "=2.0.3"
 risc0-zkvm = "=2.3.1"
 
 
-arm = { git = "https://github.com/anoma/arm-risc0", branch = "xuyang/simplify_features", default-features = true }
+arm = { git = "https://github.com/anoma/arm-risc0", branch = "m1dnight/risc0-3.0.3", default-features = true }
 counter_witness = { path = "../counter_witness"}
 serde = { version = "1.0.219", features = ["derive"] }
 lazy_static = "1.5.0"
