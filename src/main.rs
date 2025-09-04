@@ -5,7 +5,7 @@ use arm::nullifier_key::{NullifierKey, NullifierKeyCommitment};
 use arm::resource::Resource;
 use arm::transaction::Transaction;
 use counter_library::counter_logic::CounterLogic;
-use crate::eth::submit;
+// use crate::eth::submit;
 
 mod eth;
 mod test;
@@ -31,9 +31,9 @@ pub fn prove_counter_logic(counter_logic: CounterLogic) -> LogicVerifier {
     test::prove_counter_logic(counter_logic)
 }
 
-fn submit_transaction(transaction: arm::transaction::Transaction) {
-    test::submit_transaction(transaction)
-}
+// fn submit_transaction(transaction: arm::transaction::Transaction) {
+//     test::submit_transaction(transaction)
+// }
 
 fn keypair() -> (
     (NullifierKey, NullifierKeyCommitment),
@@ -51,6 +51,6 @@ pub fn delta_message(transaction : Transaction) -> Vec<u8> {
 fn main() {
     let (a, b) = keypair();
     let tx = create_tx_in_rust(a, b);
-    submit_transaction(tx.0);
+    // submit_transaction(tx.0);
     ()
 }

@@ -1,4 +1,4 @@
-use crate::eth::submit;
+// use crate::eth::submit;
 use crate::transaction::create_init_counter_tx;
 use arm::compliance::ComplianceInstance;
 use arm::compliance_unit::ComplianceUnit;
@@ -17,14 +17,14 @@ pub fn counter_logic_ref() -> Vec<u8> {
     CounterLogic::verifying_key_as_bytes()
 }
 
-pub fn submit_transaction(transaction: Transaction) {
-    let rt = tokio::runtime::Builder::new_current_thread()
-        .enable_all()
-        .build()
-        .unwrap();
+// pub fn submit_transaction(transaction: Transaction) {
+//     let rt = tokio::runtime::Builder::new_current_thread()
+//         .enable_all()
+//         .build()
+//         .unwrap();
 
-    let _ = rt.block_on(async { submit(transaction).await });
-}
+//     let _ = rt.block_on(async { submit(transaction).await });
+// }
 
 pub fn keypair() -> (
     (NullifierKey, NullifierKeyCommitment),
